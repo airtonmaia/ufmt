@@ -281,8 +281,8 @@ export default function StudentApp() {
         <div className="text-center space-y-8">
           <div className="space-y-4">
             <h1 className="text-2xl font-bold text-red-600">Em caso de emergência</h1>
-            <p className="text-gray-700 max-w-md font-size-xs">
-              Pressione e segure o botão por 1.5 segundos para<br/>alertar a equipe de segurança do campus.
+            <p className="text-gray-700 max-w-md text-sm">
+              Pressione e segure o botão por 1.5 segundos para alertar a equipe de segurança do campus.
             </p>
           </div>
 

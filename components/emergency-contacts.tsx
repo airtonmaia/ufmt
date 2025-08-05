@@ -8,7 +8,7 @@ export function EmergencyContacts() {
   const contacts = [
     {
       name: "Segurança do Campus",
-      phone: "(11) 3091-9999",
+      phone: "(65) 3615-8000",
       description: "Emergências no campus",
       icon: Shield,
       color: "bg-red-500",
@@ -45,13 +45,13 @@ export function EmergencyContacts() {
   }
 
   return (
-    <Card>
+    <Card className="p-0 bg-gray-50 border-0 shadow-none">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Phone className="w-5 h-5" />
+        <CardTitle className="flex items-center justify-center gap-2 text-lg border-t-1 pt-5">
+          <Phone className="w-5 h-5 text-center " />
           Contatos de Emergência
         </CardTitle>
-        <CardDescription>Números importantes para situações de emergência</CardDescription>
+        {/* <CardDescription>Números importantes para situações de emergência</CardDescription> */}
       </CardHeader>
       <CardContent className="space-y-4">
         {contacts.map((contact) => (
@@ -60,19 +60,16 @@ export function EmergencyContacts() {
               <contact.icon className="w-5 h-5 text-white" />
             </div>
             <div className="flex-1">
-              <p className="font-medium">{contact.name}</p>
-              <p className="text-sm text-gray-600">{contact.description}</p>
-              <p className="text-lg font-bold text-blue-600">{contact.phone}</p>
+              <p className="font-md">{contact.name}</p>
+              <p className="text-gray-600 text-xs">{contact.description}</p>
+              <p className="text-md font-bold text-blue-600">{contact.phone}</p>
             </div>
             <div className="flex gap-2">
               <Button size="sm" onClick={() => handleCall(contact.phone)} className="bg-green-600 hover:bg-green-700">
                 <Phone className="w-4 h-4 mr-1" />
                 Ligar
               </Button>
-              <Button size="sm" variant="outline" onClick={() => handleSMS(contact.phone)}>
-                <MessageSquare className="w-4 h-4 mr-1" />
-                SMS
-              </Button>
+             
             </div>
           </div>
         ))}
