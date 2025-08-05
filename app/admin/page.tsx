@@ -254,7 +254,7 @@ export default function AdminDashboard() {
               <CardContent>
                 <div className="relative bg-green-100 rounded-lg h-96 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-green-200 to-green-300">
-                    <div className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium">Campus Universitário - Supabase Real-time</div>
+                    <div className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium">Campus Universitário - UFMT</div>
                     {activeAlerts.map((alert, index) => {
                       const mapX = 30 + (alert.longitude + 46.6333) * 1000 + index * 15;
                       const mapY = 40 + (alert.latitude + 23.5505) * 1000 + index * 10;
