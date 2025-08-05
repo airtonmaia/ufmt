@@ -91,7 +91,7 @@ export default function AdminDashboard() {
         const newAlert = payload.new as Alert;
         handleNewAlert(newAlert);
         toast({
-          title: "🚨 Novo Alerta de Emergência",
+          title: "Novo Alerta de Emergência",
           description: `${newAlert.student_name} acionou o pânico`,
           variant: "destructive",
         });
@@ -217,12 +217,12 @@ export default function AdminDashboard() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <AlertTriangle className="w-6 h-6 text-white" />
+              <div className="w-10 h-12 rounded-lg flex items-center justify-center">
+                <img src="favicon.png" alt="" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900">Dashboard de Segurança</h1>
-                <p className="text-sm text-gray-600">Supabase Real-time - {userData?.name}</p>
+                <h1 className="text-xl font-bold text-gray-900">Painel de Segurança</h1>
+                <p className="text-xs text-gray-600">Monitoramento em tempo real - UFMT</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -255,7 +255,7 @@ export default function AdminDashboard() {
               <CardContent>
                 <div className="relative bg-green-100 rounded-lg h-96 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-green-200 to-green-300">
-                    <div className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium">Campus Universitário - Supabase Real-time</div>
+                    <div className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium">Campus Universitário - UFMT</div>
                     {activeAlerts.map((alert, index) => {
                       const mapX = 30 + (alert.longitude + 46.6333) * 1000 + index * 15;
                       const mapY = 40 + (alert.latitude + 23.5505) * 1000 + index * 10;

@@ -60,7 +60,7 @@ export function RealTimeNotifications() {
 
           // Mostrar toast
           toast({
-            title: "🚨 Novo Alerta de Emergência",
+            title: "⚠️ Novo Alerta de Emergência ⚠️",
             description: `${alert.student_name} acionou o botão de pânico`,
             variant: "destructive",
           })
