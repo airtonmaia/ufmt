@@ -7,7 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Campus Security - Sistema de Segurança Universitária",
+  title: "UFMT- Sistema de Segurança Universitária",
   description:
     "Aplicativo de segurança pessoal para estudantes universitários com botão de pânico e monitoramento em tempo real.",
     generator: 'v0.dev'
