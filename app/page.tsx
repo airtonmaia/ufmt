@@ -200,7 +200,7 @@ export default function LoginPage() {
                   <p className="font-medium">Contas de teste:</p>
                   <p>• 2024001234 - João Silva Santos</p>
                   <p>• 2024001235 - Maria Oliveira Costa</p>
-                  <p>• 2024001236 - Pedro Santos Lima</p>
+                  <p>• 2024001236 - Airton Maia</p>
                 </div>
               </CardContent>
             </Card>

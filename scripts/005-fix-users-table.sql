@@ -10,7 +10,7 @@ INSERT INTO public.users (email, student_id, name, course, phone, user_type) VAL
 ('seguranca@universidade.edu.br', NULL, 'Equipe de Segurança', NULL, '(11) 88888-8888', 'admin'),
 ('joao.silva@estudante.edu.br', '2024001234', 'João Silva Santos', 'Engenharia de Software', '(11) 77777-7777', 'student'),
 ('maria.oliveira@estudante.edu.br', '2024001235', 'Maria Oliveira Costa', 'Administração', '(11) 66666-6666', 'student'),
-('pedro.santos@estudante.edu.br', '2024001236', 'Pedro Santos Lima', 'Direito', '(11) 55555-5555', 'student'),
+('pedro.santos@estudante.edu.br', '2024001236', 'Airton Maia', 'Direito', '(11) 55555-5555', 'student'),
 ('ana.costa@estudante.edu.br', '2024001237', 'Ana Costa Ferreira', 'Medicina', '(11) 44444-4444', 'student'),
 ('carlos.lima@estudante.edu.br', '2024001238', 'Carlos Lima Souza', 'Psicologia', '(11) 33333-3333', 'student')
 ON CONFLICT (email) DO NOTHING;
