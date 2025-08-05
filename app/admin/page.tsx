@@ -1,6 +1,5 @@
 "use client"
 
-
 import { useState, useEffect, useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -24,7 +23,9 @@ import { useRouter } from "next/navigation"
 import { useToast } from "@/hooks/use-toast"
 import { StatsDashboard } from "@/components/stats-dashboard"
 import { RealTimeNotifications } from "@/components/real-time-notifications"
-import { getAllAlerts, updateAlertStatus, subscribeToAlerts, supabase } from "@/lib/alerts"
+// CORREÇÃO CRÍTICA: Importar supabase da sua fonte correta
+import { supabase } from "@/lib/supabase" 
+import { getAllAlerts, updateAlertStatus, subscribeToAlerts } from "@/lib/alerts"
 import type { Alert } from "@/lib/supabase"
 import type { RealtimeChannel } from "@supabase/supabase-js"
 
@@ -46,7 +47,7 @@ export default function AdminDashboard() {
   
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  // --- LÓGICA CENTRALIZADA E CORRIGIDA ---
+  // --- LÓGICA DE SOM E TEMPO REAL CENTRALIZADA E CORRIGIDA ---
 
   // Efeito 1: Executado uma vez para inicializar o áudio, verificar o utilizador e carregar os dados iniciais.
   useEffect(() => {
@@ -105,9 +106,8 @@ export default function AdminDashboard() {
     
     console.log("🔌 A subscrever ao canal de alertas...");
     const channel = subscribeToAlerts(handlePayload);
-    channel.subscribe((status, err) => {
+    channel.subscribe(status => {
         console.log(`[Supabase Realtime] Status: ${status}`);
-        if (err) console.error("Erro de subscrição:", err);
     });
 
     // Função de Limpeza
@@ -255,7 +255,7 @@ export default function AdminDashboard() {
               <CardContent>
                 <div className="relative bg-green-100 rounded-lg h-96 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-green-200 to-green-300">
-                    <div className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium">Campus Universitário - UFMT</div>
+                    <div className="absolute top-4 left-4 bg-white px-3 py-1 rounded-full text-sm font-medium">Campus Universitário - Supabase Real-time</div>
                     {activeAlerts.map((alert, index) => {
                       const mapX = 30 + (alert.longitude + 46.6333) * 1000 + index * 15;
                       const mapY = 40 + (alert.latitude + 23.5505) * 1000 + index * 10;

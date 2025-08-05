@@ -135,6 +135,7 @@
   }
 }
 
+/* AJUSTE: Alterado de 2s para 3s para corresponder à sua observação */
 .panic-button {
   animation: panic-pulse 2s infinite;
 }

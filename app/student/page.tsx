@@ -60,10 +60,10 @@ export default function StudentApp() {
         },
         (error) => {
           console.error("Erro ao obter localização:", error)
-          // Usar localização simulada (Campus da USP como exemplo)
+          // Usar localização simulada (Campus da UFMT como exemplo)
           setLocation({
-            lat: -23.5505 + (Math.random() - 0.5) * 0.01,
-            lng: -46.6333 + (Math.random() - 0.5) * 0.01,
+            lat: -15.5989 + (Math.random() - 0.5) * 0.01,
+            lng: -56.0949 + (Math.random() - 0.5) * 0.01,
           })
         },
         {
@@ -75,8 +75,8 @@ export default function StudentApp() {
     } else {
       // Fallback para localização simulada
       setLocation({
-        lat: -23.5505 + (Math.random() - 0.5) * 0.01,
-        lng: -46.6333 + (Math.random() - 0.5) * 0.01,
+        lat: -15.5989 + (Math.random() - 0.5) * 0.01,
+        lng: -56.0949 + (Math.random() - 0.5) * 0.01,
       })
     }
   }
@@ -94,7 +94,8 @@ export default function StudentApp() {
           activatePanic()
           return 100
         }
-        return prev + 100 / 15 // 1.5 segundos = 15 intervalos de 100ms
+        // AJUSTE: Alterado de 15 (1.5s) para 20 (2s)
+        return prev + 100 / 20 // 2 segundos = 20 intervalos de 100ms
       })
     }, 100)
   }
@@ -169,7 +170,6 @@ export default function StudentApp() {
   }
 
   const handleLogout = () => {
-    // Limpar intervalos
     if (intervalRef.current) clearInterval(intervalRef.current)
     if (progressRef.current) clearInterval(progressRef.current)
     if (locationIntervalRef.current) clearInterval(locationIntervalRef.current)
@@ -182,7 +182,6 @@ export default function StudentApp() {
   const resetAlert = async () => {
     if (currentAlertId) {
       try {
-        // Usar a função do Supabase para atualizar o status
         await updateAlertStatus(currentAlertId, "false_alarm", userData?.id)
       } catch (error) {
         console.error("Erro ao cancelar alerta:", error)
@@ -211,17 +210,8 @@ export default function StudentApp() {
 
   if (isActivated) {
     return (
-      <div className="min-h-screen bg-green-50 flex flex-col items-center justify-center p-4">
-        {/* Componente para rastrear atualizações de localização em tempo real */}
-        {currentAlertId && (
-          <LocationTracker
-            alertId={currentAlertId}
-            onLocationUpdate={(location) => {
-              console.log("Nova localização recebida:", location)
-            }}
-          />
-        )}
-
+      <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
+        {currentAlertId && <LocationTracker alertId={currentAlertId} />}
         <div className="text-center space-y-6">
           <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto animate-pulse">
             <AlertTriangle className="w-12 h-12 text-white" />
@@ -253,21 +243,17 @@ export default function StudentApp() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Header */}
+    <div className="min-h-screen bg-white flex flex-col">
       <div className="p-3 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Avatar>
             <AvatarImage src="/diverse-student-profiles.png" />
             <AvatarFallback>
-              {userData.name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+              {userData.name.split(" ").map((n) => n[0]).join("")}
             </AvatarFallback>
           </Avatar>
           <div>
-            <p className="text-sm text-gray-600">Olá,  <span className="font-semibold text-gray-900">{userData.name}</span></p>
+            <p className="text-sm text-gray-600">Olá, <span className="font-semibold text-gray-900">{userData.name}</span></p>
            <p className="text-xs text-gray-500">Curso: {userData.course}</p>
           </div>
         </div>
@@ -276,17 +262,16 @@ export default function StudentApp() {
         </Button>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="text-center space-y-8">
           <div className="space-y-4">
             <h1 className="text-2xl font-bold text-red-600">Em caso de emergência</h1>
+            {/* AJUSTE: Texto atualizado para 2 segundos */}
             <p className="text-gray-700 max-w-md text-sm">
-              Pressione e segure o botão por 1.5 segundos para alertar a equipe de segurança do campus.
+              Pressione e segure o botão por 2 segundos para alertar a equipe de segurança do campus.
             </p>
           </div>
 
-          {/* Panic Button */}
           <div className="relative">
             <button
               onMouseDown={handlePanicStart}
@@ -316,7 +301,6 @@ export default function StudentApp() {
                 <span>{isLoading ? "ENVIANDO..." : "PÂNICO"}</span>
               </div>
 
-              {/* Progress Ring */}
               {isActivating && (
                 <div className="absolute inset-0 rounded-full">
                   <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
@@ -339,7 +323,8 @@ export default function StudentApp() {
           </div>
 
           <div className="text-sm text-gray-700 space-y-2">
-            <p>Mantenha pressionado por 1.5 segundos</p>
+            {/* AJUSTE: Texto atualizado para 2 segundos */}
+            <p>Mantenha pressionado por 2 segundos</p>
             {location && (
               <div className="flex items-center justify-center gap-1 text-green-600">
                 <MapPin className="w-3 h-3" />
@@ -350,7 +335,6 @@ export default function StudentApp() {
         </div>
       </div>
 
-      {/* Emergency Contacts */}
       <div className="p-4">
         <EmergencyContacts />
       </div>

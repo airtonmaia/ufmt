@@ -45,7 +45,7 @@ export function EmergencyContacts() {
   }
 
   return (
-    <Card className="p-0 bg-gray-50 border-0 shadow-none">
+    <Card className="p-0 bg-white border-0 shadow-none">
       <CardHeader>
         <CardTitle className="flex items-center justify-center gap-2 text-lg border-t-1 pt-5">
           <Phone className="w-5 h-5 text-center " />
